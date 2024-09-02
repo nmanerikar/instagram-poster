@@ -1,0 +1,18 @@
+{
+  "name": "instagram-poster",
+  "version": "1.0.0",
+  "description": "A wrapper around instagram-private-api for simple photo and album posts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/nmanerikar/instagram-poster"
+  },
+  "author": "Nishad Manerikar",
+  "license": "ISC",
+  "dependencies": {
+    "instagram-private-api": "^1.46.1"
+  }
+}
