@@ -19,16 +19,34 @@ export class InstagramPoster {
         }
     }
 
+    async getLocation(place?: string): Promise<any> {
+        if (place === undefined) {
+            return undefined;
+        }
+
+        try {
+            const locations = await this.ig.search.location(0.0, 0.0, place);
+            return locations[0];
+        } catch (error) {
+            console.log('Error getting location - skipping location.');
+            console.log(JSON.stringify(error));
+        }
+
+        return undefined;
+    }
+
     async post(
         images: string[],
         caption: string,
-        location?: string
+        place?: string
     ): Promise<string> {
+        let loc = await this.getLocation(place);
         let res;
         if (images.length === 1) {
             res = await this.ig.publish.photo({
                 file: await fs.promises.readFile(images[0]),
                 caption,
+                location: loc,
             });
         } else {
             res = await this.ig.publish.album({
@@ -38,6 +56,7 @@ export class InstagramPoster {
                     }))
                 ),
                 caption,
+                location: loc,
             });
         }
 
