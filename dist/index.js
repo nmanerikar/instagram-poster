@@ -5,7 +5,7 @@ export class InstagramPoster {
         this.ig = new IgApiClient();
     }
     async login(username, password) {
-        this.ig.state.generateDevice(process.env.INSTAGRAM_USERNAME);
+        this.ig.state.generateDevice(username);
         try {
             const auth = await this.ig.account.login(username, password);
         }

@@ -9,7 +9,7 @@ export class InstagramPoster {
     }
 
     async login(username: string, password: string) {
-        this.ig.state.generateDevice(process.env.INSTAGRAM_USERNAME!);
+        this.ig.state.generateDevice(username);
         try {
             const auth = await this.ig.account.login(username, password);
         } catch (error) {
